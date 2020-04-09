@@ -114,7 +114,7 @@ public class MainClass {
 
         for (int i = 0; i < arraySize; i++){
             for (int j = 0; j < arraySize; j++){
-                if (i == j) {
+                if ((i == j) || ((i + j) == (arraySize - 1))) {
                     matrixArray[i][j] = 1;
                 }
                 else {
