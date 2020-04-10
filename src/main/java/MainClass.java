@@ -21,7 +21,7 @@ public class MainClass {
         questionSix(badArray);
 
         questionSeven(new int[] {0, 1, 2, 3, 4, 5}, 1);
-        questionSeven(new int[] {0, 1, 2, 3, 4, 5}, -1);
+        questionSeven(new int[] {0, 1, 2, 3, 4, 5}, -10);
 
         System.out.println();
     }
@@ -206,10 +206,19 @@ public class MainClass {
 
         System.out.println(Arrays.toString(inputArray));
 
+        /*
+        На всякий случай прокомментирую мысль.
+        Тут принцип переполнения byte :)
+        сдвиг на -дельта равен сдвигу (длина_массива - дельта)
+        Чуть подумал потом.
+        Для таких хитрых, как я, надо задавать delta БОЛЬШЕЕ, чем длина массива :)
+        В таком случае количество "целых" проходов (на всю длину) можно пропустить.
+         */
+        delta = delta % inputArray.length;
         if (delta < 0){
-            delta = inputArray.length + delta;
+            delta = inputArray.length - Math.abs(delta);
         }
-        for (int j = 0; j < Math.abs(delta); j ++) {
+        for (int j = 0; j < delta; j ++) {
             int tmpElem = inputArray[0];
             for (int i = 0; i < inputArray.length - 1; i++) {
                 inputArray[i] = inputArray[i + 1];
