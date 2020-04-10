@@ -138,8 +138,8 @@ public class MainClass {
             System.out.printf("%s\t", minMaxArray[i]);
         }
 
-        int minValue = 101;
-        int maxValue = -1;
+        int minValue = Integer.MAX_VALUE;
+        int maxValue = Integer.MIN_VALUE;
         // getting min and max value
         for (int i : minMaxArray){
             if (minValue > i){
