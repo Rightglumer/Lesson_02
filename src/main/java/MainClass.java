@@ -20,9 +20,8 @@ public class MainClass {
         int[] badArray = {0, 1, 2, 3, 4, 5};  // hasn't sum
         questionSix(badArray);
 
-        int[] moveArray = {0, 1, 2, 3, 4, 5};
-        questionSeven(moveArray, 1);
-        questionSeven(moveArray, -1);
+        questionSeven(new int[] {0, 1, 2, 3, 4, 5}, 1);
+        questionSeven(new int[] {0, 1, 2, 3, 4, 5}, -1);
 
         System.out.println();
     }
@@ -205,6 +204,19 @@ public class MainClass {
     public static void questionSeven(int[] inputArray, int delta){
         printTitle("Question 7. Move array.");
 
-        System.out.println("...in process...");
+        System.out.println(Arrays.toString(inputArray));
+
+        if (delta < 0){
+            delta = inputArray.length + delta;
+        }
+        for (int j = 0; j < Math.abs(delta); j ++) {
+            int tmpElem = inputArray[0];
+            for (int i = 0; i < inputArray.length - 1; i++) {
+                inputArray[i] = inputArray[i + 1];
+            }
+            inputArray[inputArray.length - 1] = tmpElem;
+        }
+
+        System.out.println(Arrays.toString(inputArray));
     }
 }
